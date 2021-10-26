@@ -103,9 +103,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "nee-radio"
+  "defaultProject": "nee-radio",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
