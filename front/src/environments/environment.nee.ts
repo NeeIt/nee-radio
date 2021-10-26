@@ -1,6 +1,6 @@
 export const environment = {
-  buildName: 'Production',
+  buildName: 'Nee',
   production: true,
   apiUrl: '',
-  token: ''
+  token: 'token'
 };

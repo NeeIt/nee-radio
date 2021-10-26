@@ -64,6 +64,14 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "nee": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.nee.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -76,7 +84,10 @@
             },
             "development": {
               "browserTarget": "nee-radio:build:development"
-            }
+            },
+            "nee": {
+            "browserTarget": "nee-radio:build:nee"
+        }
           },
           "defaultConfiguration": "development"
         },

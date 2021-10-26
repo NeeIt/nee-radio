@@ -52,6 +52,7 @@ module.exports = {
         'no-empty-character-class': 'warn',
         'no-empty-pattern': 'error',
         'no-ex-assign': 'error',
+        '@typescript-eslint/no-empty-function': 'off',
         'no-fallthrough': 'warn',
         'no-func-assign': 'error',
         'no-import-assign': 'error',
@@ -95,7 +96,6 @@ module.exports = {
           before: true,
           after: true,
         }],
-        'lines-between-class-members': ['error', 'always'],
         'max-len': ['warn', {
           code: 80,
           tabWidth: 2,
