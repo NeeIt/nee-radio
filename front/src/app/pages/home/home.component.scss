@@ -27,6 +27,12 @@
       display: none;
     }
   }
+
+  &__mobileLogin {
+    @include Media(smallMobile) {
+      display: none;
+    }
+  }
 }
 
 .livePlay {
