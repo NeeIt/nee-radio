@@ -1,0 +1,22 @@
+.login {
+    position: relative;
+    
+    &__img {
+        position: absolute;
+        width: 300px;
+        top: 0px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-130%);
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    &__buttons{
+        display: flex;
+        justify-content: space-between;
+    }
+}

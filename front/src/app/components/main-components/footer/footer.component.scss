@@ -1,0 +1,36 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+@import '/src/assets/styles/mixins.scss';
+
+.footer {
+  @include MainBlock;
+  @include Flex(null, center, column);
+  margin-top: 20px;
+  row-gap: 20px;
+  text-align: center;
+
+  &__line {
+    @include Size(50%, 1px);
+    background-color: var(--border_color_light);
+  }
+
+  &__contacts {
+    line-height: 1.5em;
+  }
+
+  &__pages {
+    @include Flex(center);
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  &__socials {
+    @include Flex(space-around);
+    @include Size(100%, null, 400px);
+    display: none;
+    font-size: 35px;
+    padding: 10px;
+    @include Media(mobile){
+      display: flex;
+    }
+  }
+}

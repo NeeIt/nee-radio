@@ -1,0 +1,128 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+
+.playBar{
+  @include Flex(null, flex-end);
+  gap: 10px;
+
+  &__wrapper {
+    @include Size(100%);
+    &_full {
+      @include Size(calc(100% - 110px));
+    }
+  }
+
+  &__titleWrapper {
+    @include Size(100%);
+    padding: 0 10px 10px 10px;
+    text-align: end;
+    overflow: hidden;
+  }
+
+  &__title {
+    @include Flex;
+    @include BreakNone;
+    column-gap: 10px;
+  }
+
+  &__container {
+    @include Flex(space-between, center);
+    @include Size(100%);
+    background-color: var(--block_color);
+    border-radius: var(--main_border_radius);
+    padding: 10px 25px;
+
+    & > *{
+      &:nth-of-type(1) {
+        @include Flex;
+        @include Size(44%);
+      }
+      &:nth-of-type(2) {
+        @include Flex(center);
+        flex-grow: 1;
+      }
+      &:nth-of-type(3) {
+        @include Flex(flex-end);
+        @include Size(44%);
+      }
+    }
+  }
+
+  &__controls {
+    @include Flex;
+    gap: 10px;
+  }
+
+  &__control {
+    @include Flex(center, center);
+    @include Size(35px, 35px);
+    cursor: pointer;
+    border-radius: var(--main_border_radius);
+    background-color: rgb(226, 236, 238);
+  }
+
+  &__playButton {
+    @include Size(40px, 40px);
+    font-size: 4rem;
+    cursor: pointer;
+  }
+
+   &__currentPlay {
+    @include Size(100px, 100px);
+    min-width: 100px;
+    border-radius: var(--main_border_radius);
+    background-color: var(--block_color);
+    padding: 5px;
+  }
+
+  &__currentPlayCover {
+    @include Size(100%, 100%);
+    background-position: center;
+    background-size: cover;
+    border-radius: var(--main_border_radius);
+  }
+}
+
+.volumeRange {
+  $self: &;
+
+  &_desktop {
+    @include Flex(null, center);
+    gap: 10px;
+
+    @include Media(mobile){
+      display: none;
+    }
+
+    #{ $self }__bar {
+      @include Size(75px, 2px);
+
+      @include Media(smallTable){
+        @include Size(125px, 2px);
+      }
+    }
+  }
+
+  &_mobile {
+    display: none;
+    position: relative;
+
+    @include Media(mobile) {
+      display: block;
+    }
+
+    #{ $self }__bar {
+      @include Size(8px, 2px);
+      -webkit-appearance: slider-vertical;
+      height: 175px;
+      padding: 0 5px;
+    }
+
+    #{ $self }__barContainer {
+      @include Absolute(null, null, 35px, 50%);
+      transform: translateX(-50%);
+      background-color: var(--button_color_filled);
+      padding: 20px;
+      border-radius: var( --main_border_radius);
+    }
+  }
+}

@@ -1,0 +1,63 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+
+.newsSlider{
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 50px;
+
+  &__container {
+    @include Flex;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &__slide {
+    @include Size(100%, 260px);
+    min-width: 100%;
+    position: relative;
+    border-radius: var(--main_border_radius);
+    background-color: gray;
+    background-image: url('https://www.meme-arsenal.com/memes/d28d10f68959b1c24e4d349ed64a09e0.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+
+  &__bullets {
+    @include Absolute(null, null, 5px, 50%);
+    transform: translateX(-50%);
+    font-size: 1rem;
+    display:flex;
+    color: var(--text_color_light);
+  }
+
+  &__bullet {
+    padding: 5px;
+    cursor: pointer;
+    &_current{
+    color: var(--main_color);
+    text-shadow: 1px 1px 4px rgb(0 0 0 / 45%);
+    }
+    &:first-of-type:last-of-type {
+      display:none;
+    }
+  }
+
+  &__data {
+    @include Flex(center, null, column);
+    row-gap: 20px;
+    height:100%;
+    background-image: linear-gradient(90deg, rgba(255,255,255, 1) 10%, rgba(255,255,255,0) 900px);
+  }
+
+  &__controls {
+    @include Flex;
+    column-gap: 10px;
+    margin-left: 30px;
+  }
+
+  &__title {
+    @include Size(null, null, 400px);
+    font-size: 3rem;
+    margin-left: 30px;
+  }
+}

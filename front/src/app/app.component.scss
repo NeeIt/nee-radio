@@ -1,0 +1,138 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+
+.app {
+  &__wrapper {
+    background-repeat: repeat;
+    min-height: 100vh;
+    
+    padding-top: 30px;
+    padding-right: 330px;
+    padding-bottom: 130px;
+    padding-left: 30px;
+    
+    &_noRightPanel {
+      padding-right: 30px;
+    }
+
+    @include Media(table) {
+      padding-top: 20px;
+      padding-right: 310px;
+      padding-bottom: 120px;
+      padding-left: 30px;
+
+      &_noRightPanel {
+        padding-right: 30px;
+      }
+    }
+    @include Media(smallTable){
+      padding-top: 20px;
+      padding-right: 30px;
+      padding-bottom: 120px;
+      padding-left: 30px;
+    }
+    @include Media(mobile){
+      padding-top: 52px;
+      padding-right: 0px;
+      padding-bottom: 96px;
+      padding-left: 0px;
+    }
+  }
+
+  &__content {
+    @include Flex;
+  }
+
+  &__router {
+    flex-grow: 1;
+  }
+
+  &__rightPanel {
+    @include Media(smallTable){
+      display: none;
+    }
+  }
+
+  &__playBarBg {
+    @include Absolute(null, null, 0, 0);
+    @include Size(100%, 300%);
+    pointer-events: none;
+    background: linear-gradient(rgba(236, 236, 236, 0) 0%, rgb(236, 236, 236) 100%);
+  }
+
+  &__playBarContainer {
+    $container: &;
+    @include Fixed(null, null, 0, 0);
+    @include Size(100%);
+    padding-top: 0px;
+    padding-right: 330px;
+    padding-bottom: 20px;
+    padding-left: 350px;
+
+    &_compressedMenu {
+      padding-top: 0px;
+      padding-right: 330px;
+      padding-bottom: 20px;
+      padding-left: 110px;
+
+      &#{$container}_noMenu {
+        padding-left: 30px;
+        
+        @include Media(mobile){
+          padding-left: 0px;
+        }
+      }
+    }
+
+    &_noMenu {
+      padding-left: 30px;
+    }
+
+    &_noRightPanel {
+      padding-right: 30px;
+    }
+
+    @include Media(table){
+      padding-top: 0px;
+      padding-right: 310px;
+      padding-bottom: 20px;
+      padding-left: 110px;
+
+      &_noMenu {
+        padding-left: 30px;
+      }
+
+      &_noRightPanel {
+        padding-right: 30px;
+      }
+    }
+    @include Media(smallTable){
+      padding-top: 0px;
+      padding-right: 30px;
+      padding-bottom: 20px;
+      padding-left: 110px;
+
+      &_noMenu {
+        padding-left: 30px;
+      }
+    }
+    @include Media(mobile){
+      padding-top: 0px;
+      padding-right: 0px;
+      padding-bottom: 16px;
+      padding-left: 6px;
+
+      &_noMenu {
+       padding-left: 0px;
+      }
+
+      &_noRightPanel {
+        padding-right: 0px;
+      }
+    }
+  }
+
+  &__playBar {
+    position: relative;
+    z-index: 10;
+  }
+}

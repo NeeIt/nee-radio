@@ -1,0 +1,130 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+
+.menuPlaceholder {
+  @include Size(300px);
+
+  &_compressed {
+    @include Size(80px);
+  }
+  @include Media(table){
+    @include Size(80px);
+  }
+}
+
+.menu {
+  @include Fixed(0, null, null, 0);
+  @include Flex(null, null, column);
+  z-index: 10;
+  @include Size(300px);
+  min-height: 100vh;
+  padding: 40px;
+  background-color: var(--block_color);
+
+  @include Media(table){
+    @include Size(80px);
+    padding: 40px 10px;
+  }
+
+  &_compressed {
+    @include Size(80px);
+    padding: 40px 10px;
+    
+    &__socials { 
+      @include Flex(center, center, column);
+    }
+
+    .pageList__elementText {
+      display: none;
+    }
+
+    .pageList__element_selected::after{
+      @include Absolute(0px, -10px);
+    }
+  }
+
+  &__logo {
+    @include Size(null, 50px);
+    object-fit: contain;
+    margin: 45px 0;
+  }
+
+  &__socials {
+    @include Flex(center);
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 20px;
+
+    @include Media(table){
+      @include Flex(center, center, column);
+    }
+  }
+  
+  &__stateControl {
+    @include Flex(center, center);
+    column-gap: 10px;
+    padding: 20px 20px 0 20px;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    color: var(--text_color_main);
+    cursor: pointer;
+
+    &:hover{
+      color: var(--main_color);
+    }
+
+    @include Media(table){
+      display: none;
+    }
+  }
+}
+
+.pageList {
+  @include Flex(null, null, column);
+  flex-grow: 1;
+
+  &__element{
+    $root: &;
+
+    @include Flex;
+    column-gap: 15px;
+    position: relative;
+    padding: 20px;
+    border-radius: var(--main_border_radius);
+    cursor: pointer;
+    transition: color 0.15s ease-in-out;
+    color: var(--text_color_light);
+
+    @include Media(table){
+      @include Flex(center);
+    }
+
+    &_selected{
+      background-color: var(--button_color_filled);
+      color: var(--text_color_reversed);
+      cursor: auto;
+
+      &::after {
+        content: '';
+        @include Absolute(0, -40px);
+        @include Size(4px, 100%);
+        border-radius: var(--main_border_radius);
+        background-color: var(--button_color_filled);
+
+        @include Media(table){
+          @include Absolute(0px, -10px);
+        }
+      }
+    }
+
+    &:not(.pageList__element_selected):hover{
+      color: var(--text_color_main);
+    }
+  }
+
+  &__elementText {
+    @include Media(table){
+      display: none;
+    }
+  }
+}
+

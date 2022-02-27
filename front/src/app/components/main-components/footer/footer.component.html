@@ -1,0 +1,28 @@
+<footer class="footer">
+  <div class="footer__pages">
+    <a *ngFor="let page of pages" href="{{page.link}}">
+      {{page.title}}
+    </a>
+  </div>
+  <div class="footer__line"></div>
+  <span>{{siteDescription}}</span>
+  <div class="footer__socials">
+    <a href="{{socials.VK}}" target="_blank">
+      <i class="fab fa-vk"></i>
+    </a>
+    <a href="{{socials.TWITTER}}" target="_blank">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="{{socials.DISCORD}}" target="_blank">
+      <i class="fab fa-discord"></i>
+    </a>
+  </div>
+  <div class="footer__line"></div>
+  <div class="footer__contacts"
+   *appPermission="'footer_contacts'">
+    По всем вопросам:
+    <a href="mailto:{{email}}">{{email}}</a>
+  </div>
+  <div>{{copyrightText}}</div>
+</footer>
+<!-- Наполнить футер -->

@@ -1,0 +1,91 @@
+<div class="playBar">
+  <div class="playBar__wrapper" [class.playBar__wrapper_full] = "minimalizeCurrentPlay">
+
+    <ng-container *appPermission="'playbar_runLine'">
+      <div class="playBar__titleWrapper"
+        *ngIf="minimalizeCurrentPlay">
+        <div class="textBold playBar__title" runLine>
+          <span> {{ currentPlay.artist + ' - ' + currentPlay.title + ' (' + currentPlay.album + ')'}}</span>
+          <span>
+            <span class="textLight">Заказал:</span>
+            {{currentPlay.orderUserName}}
+          </span>
+        </div>
+      </div>
+    </ng-container>
+
+    <div class="playBar__container">
+      <div class="playBar__controls">
+        <div class="playBar__control"
+          (click) = "musicService.changeLikeState(currentPlay)"
+          tooltip="Добавить в избранное"
+          *appPermission="'playbar_like'">
+          <i class="{{musicService.hasLike(currentPlay) ? icons.LIKED : icons.LIKE }}"></i>
+        </div>
+        <div class="playBar__control"
+          tooltip="Перейти к треку"
+          *appPermission="'playbar_musicInfo'">
+          <i class="{{icons.MORE_INFO}}"></i>
+        </div>
+        <div class="playBar__control"
+          *appPermission="'playbar_artistInfo'"
+          tooltip="Перейти к автору">
+          <i class="{{icons.ARTIST}}"></i>
+        </div>
+      </div>
+      <div>
+      <ng-container *appPermission="'playbar_playButton'">
+        <i *ngIf="!playState; else playing"
+          class="fas fa-play-circle playBar__playButton"
+          (click)="musicService.play()">
+        </i>
+        <ng-template #playing>
+          <i class="fas fa-pause-circle playBar__playButton" (click)="musicService.pause()"></i>
+        </ng-template>
+        <i class="{{icons.NEXT_ARROW}}" (click)="musicService.nextMusic()"></i>
+      </ng-container>
+      </div>
+      <div>
+        <ng-container
+          *appPermission="'playbar_volume'">
+          <div class="playBar__volume volumeRange volumeRange_desktop">
+            <i class="fas fa-volume-down volumeRange__ico volumeRange__ico_min" (input)="musicService.setVolume(0)"></i>
+            <input
+              type="range"
+              class="volumeRange__bar styled-slider slider-progress"
+              #volumeDesktop
+              [value]="musicVolume$ | async"
+              (input)="musicService.setVolume(+volumeDesktop.value)"/>
+            <i class="fas fa-volume-up volumeRange__ico volumeRange__ico_max" (input)="musicService.setVolume(100)"></i>
+        </div>
+        <div class="playBar__volume volumeRange volumeRange_mobile" #volumeMobileContainer>
+          <div class="volumeRange__barContainer" *ngIf="isShowedMobileVolume">
+            <input
+              type="range"
+              class="volumeRange__bar styled-slider slider-progress"
+              orient="vertical"
+              #volumeMobile
+              [value]="musicVolume$ | async"
+              (input)="musicService.setVolume(+volumeMobile.value)"/>
+          </div>
+          <i class="fas fa-volume-up volumeRange__ico" (click) = "isShowedMobileVolume = !isShowedMobileVolume" #volumeMobileButton></i>
+        </div>
+      </ng-container>
+    </div>
+    </div>
+  </div>
+
+  <ng-container *appPermission="'playbar_cover'">
+    <ng-container *ngIf="minimalizeCurrentPlay">
+      <div class="playBar__currentPlay" *ngIf="currentPlay">
+        <div class="playBar__currentPlayCover"
+        [style.backgroundImage]="'url(\'' + (currentPlay.cover || defaultAlbumCover) + '\')'">
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+</div>
+<!-- TODO Добавить текущий играющий трек -->
+<!-- TODO добавить поле для логина пользователя заказавшего-->
+<!-- TODO не прячется бар на мобилке-->

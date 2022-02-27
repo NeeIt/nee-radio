@@ -1,0 +1,12 @@
+<div
+  class="button {{color ? 'button_' + color : ''}}"
+  [class.button_noBorder] = "noBorder"
+  [class.button_noPadding] = "noPadding"
+  [class.button_disabled] = "disabled"
+  role="button"
+  (click)="click($event)"
+  [tooltip]="tooltip"
+  >
+  <ng-content></ng-content>
+  <i class="{{icon}}" aria-hidden="true"></i>
+</div>

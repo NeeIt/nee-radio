@@ -1,0 +1,37 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+@import '/src/assets/styles/mixins.scss';
+
+.artistList {
+  @include MainBlock;
+  @include Flex(null, null, column);
+  row-gap: 20px;
+  @include Size(null, null, 100%);
+  padding: 20px;
+}
+
+.artist {
+  @include Flex(null, center);
+  column-gap: 10px;
+  cursor: pointer;
+
+  &__img{
+    align-self: flex-start;
+    @include Size(35px, 35px);
+    min-width: 35px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__info {
+    @include Flex(null, null, column);
+    row-gap: 5px;
+    overflow: hidden;
+  }
+
+  &__description{
+    @include Size(null, null, 100%);
+    font-size: 1.4rem;
+    color: var(--text_color_gray);
+  }
+}

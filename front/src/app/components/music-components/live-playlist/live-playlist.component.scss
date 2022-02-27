@@ -1,0 +1,95 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+@import '/src/assets/styles/mixins.scss';
+
+.playlist {
+  @include MainBlockNoPadding;
+  @include Flex(null, null, column);
+  @include Size(100%);
+  font-weight: bold;
+
+  &__th {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: var(--text_color_light);
+    margin-bottom: 5px;
+  }
+
+  &__td {
+    padding: 10px;
+  }
+}
+
+.music {
+  @include Flex;
+  padding: 5px 0;
+  position: relative;
+
+  &__actions{
+    @include Size(70px);
+  }
+
+  &:not(:first-child):not(:last-child):after {
+    content: '';
+    @include Absolute(null, null, 0, 50%);
+    transform: translateX(-50%);
+    @include Size(70px, 1px);
+    background-color: var(--border_color_light);
+    @include Media(mobile) {
+      @include Size(100%, 1px);
+    }
+  }
+
+  &:first-of-type, &:last-of-type {
+    border-bottom: 0px dashed #ddd;
+  }
+
+  &__actions {
+    @include Flex(flex-end, center);
+    margin-right: 20px;
+  }
+
+  &__index{
+    @include Flex(null, center);
+    padding: 0 20px;
+    color: var(--text_color_light);
+
+    &_live {
+      color: var(--main_color);
+    }
+  }
+
+  &__votes {
+    padding: 10px;
+  }
+
+  &__data, &__dataGroup {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  &__title, &__artist, &__album {
+    cursor: pointer;
+    transition: background-color 0.15s;
+
+    &:hover {
+      color: var(--text_color_main);
+    }
+  }
+
+   &__currentPlay {
+    border-radius: 10px;
+    background-color: var(--block_color);
+    color: var(--text_color_main);
+    box-shadow: 0px 10px 40px rgba(0,0,0, .2);
+
+    @include Media(mobile) {
+      display: none;
+    }
+
+    td:first-child { border-top-left-radius: 10px; }
+    td:last-child { border-top-right-radius: 10px; }
+    td:first-child { border-bottom-left-radius: 10px; }
+    td:last-child { border-bottom-right-radius: 10px; }
+  }
+}

@@ -1,0 +1,40 @@
+<div class="menuPlaceholder"
+  [class.menuPlaceholder_compressed]="isMenuCompressed"
+></div>
+<div class="menu"
+  [class.menu_compressed]="isMenuCompressed">
+  <!-- TODO Заменить лого на нормальное -->
+    <img  class="menu__logo" src="assets/img/logo.png" alt="Nee-radio" aria-hidden="true"/>
+    <nav class="menu__pageList pageList">
+      <div class="pageList__element"
+          *ngFor="let element of menu"
+          [routerLink]="element.path"
+          routerLinkActive="pageList__element_selected">
+        <i class="{{element.iconClass}}" aria-hidden="true"></i>
+        <span class="pageList__elementText">{{element.text}}</span>
+      </div>
+    </nav>
+    <div class="menu__socials">
+      <a href="{{socials.VK}}"  target="_blank">
+        <i class="{{icons.VK}}"></i>
+      </a>
+      <a href="{{socials.TWITTER}}" target="_blank">
+        <i class="{{icons.TWITTER}}"></i>
+      </a>
+      <a href="{{socials.DISCORD}}" target="_blank">
+        <i class="{{icons.DISCORD}}"></i>
+      </a>
+    </div>
+    <div class="menu__stateControl" (click)="changeMenuState()">
+      <span 
+        *ngIf="isMenuCompressed; else compressMenu">
+      <i class="{{icons.OPEN_MENU}}"></i>
+    </span>
+    <ng-template #compressMenu>
+        <i class="{{icons.COMPRESS_MENU}}"></i>
+        <span>
+          Скрыть меню
+        </span>
+    </ng-template>
+    </div>
+</div>

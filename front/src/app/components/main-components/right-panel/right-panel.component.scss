@@ -1,0 +1,11 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+@import '/src/assets/styles/mixins.scss';
+
+.rightPanel {
+  @include Flex(null, null, column);
+  row-gap: 40px;
+  @include Absolute(0, 0);
+  z-index: 10;
+  @include Size(300px, 100%);
+  padding: 20px;
+}

@@ -1,0 +1,16 @@
+<div class="loginBlock">
+  <h3>Добро пожаловать!</h3>
+  <div class="loginBlock__container">
+    <span>Для того, чтобы иметь возможность заказывать песни, голосовать и сидеть в чате вам необходимо авторизироваться</span>
+    <div class="loginBlock__controls">
+    <app-button
+      color="black"
+      (clickEvent) = "popupService.open('login')"
+    >Войти</app-button>
+    <app-button
+      color="black"
+      route="/register"
+    >Регистрация</app-button>
+    </div>
+  </div>
+</div>

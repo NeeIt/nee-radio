@@ -1,0 +1,52 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+@import '/src/assets/styles/mixins.scss';
+
+.homePage {
+  &__news {
+    @include Media(mobile) {
+      display: none;
+    }
+    @include VerticalMedia(table) {
+      display: none;
+    }
+  }
+
+  &__mobile {
+    @include Size(100%);
+    @include Flex(center);
+    display: none;
+    column-gap: 20px;
+    margin-bottom: 20px;
+
+    @include Media(mobile) {
+      display: flex;
+    }
+  }
+  &__mobilefavArtists {
+    @include Media(smallMobile) {
+      display: none;
+    }
+  }
+}
+
+.livePlay {
+  &__playlists {
+    @include Flex;
+    column-gap: 20px;
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: var(--text_color_light);
+    margin-bottom: 20px;
+
+    @include Media(mobile) {
+      @include Flex(center);
+    }
+  }
+
+  &__title {
+    cursor: pointer;
+    &_selected {
+      color: var(--text_color_main);
+    }
+  }
+}

@@ -1,0 +1,51 @@
+<div class="app__wrapper"
+  [style.backgroundImage]="'url(\'' + (customSettings$ | async).backgroundPattrn.img + '\')'"
+  [class.app__wrapper_noRightPanel]="hideRightPanel">
+  <ng-container *ngIf="!hideRightPanel">
+    <app-right-panel
+    class="app__rightPanel"
+    *appPermission="'rightPanel'"
+  ></app-right-panel>
+  </ng-container>
+
+  <main class="app__content">
+    <ng-container *ngIf="!hideMenu">
+    <app-menu
+      *appPermission="'menu'"
+    ></app-menu>
+    </ng-container>
+    <div class="app__router">
+      <ng-container *ngIf="!hideTopPanel">
+        <app-header
+          *appPermission="'header'"
+        ></app-header>
+      </ng-container>
+      <router-outlet
+      ></router-outlet>
+      <ng-container *ngIf="!hideFooter">
+        <app-footer
+          *appPermission="'footer'"
+        ></app-footer>
+      </ng-container>
+    </div>
+  </main>
+
+  <div
+    class="app__playBarContainer"
+    [class.app__playBarContainer_noMenu] = "!permissionService.hasPermission('leftMenu') || !permissionService.hasPermission('menu') || hideMenu"
+    [class.app__playBarContainer_compressedMenu] = "isMenuCompressed$ | async"
+    [class.app__playBarContainer_noRightPanel] = "hideRightPanel"
+    *appPermission="'playbar'">
+    <div class="app__playBarBg" [style.display]="isFullyScrolled? 'none': 'block'"></div>
+    <app-play-bar class="app__playBar"></app-play-bar>
+  </div>
+  <app-scroll-to-top
+    *appPermission="'scrollToTop'"
+  ></app-scroll-to-top>
+
+</div>
+
+<!-- TODO подумать о сортировке в случаи если голоса одинаковые -->
+<!-- TODO отказ от ответственности сайта если гость грузит песню с авт правом -->
+<!-- TODO добавить в чат правила -->
+<!-- TODO сбор жалоб и предложений -->

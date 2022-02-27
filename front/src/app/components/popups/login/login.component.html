@@ -1,0 +1,21 @@
+<div class="login">
+    <img src="assets/img/auth.png" alt="Авторизация" class="login__img"/>
+    <form [formGroup]="loginForm" class="login__form">
+        <app-input placeholder="Логин или Email" [group]="loginForm" controlName="login"></app-input>
+        <app-input
+            [group]="loginForm"
+            controlName="password" 
+            [type]="showPassword? 'text': 'password'" 
+            placeholder="Пароль"
+            [rightIcon]="showPassword? icons.HIDDEN : icons.SHOWED"
+            (rightIconClick)="toggleShowPasswordState(showPassword? false : true)"
+            (changeEvent)="a($event)">
+        </app-input>
+        <div class="login__buttons">
+            <app-button color="black" [disabled]="!loginForm.valid" class="login__button">Войти</app-button>
+            <app-button class="login__button" [noBorder]="true">Забыл пароль</app-button>
+            <app-button class="login__button" [noBorder]="true">Регистрация</app-button>
+        </div>
+    </form>
+    <!--TODO Я НЕ РОБОТ-->
+</div>

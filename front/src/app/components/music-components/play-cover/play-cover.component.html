@@ -1,0 +1,24 @@
+<div class="play">
+    <div class="play__cover"
+      [style.backgroundImage]="'url(\'' + (music.cover || defaultAlbumCover) + '\')'">
+      <app-button
+      *appPermission="'playCover_like'"
+      icon="{{musicService.hasLike(music) ? icons.LIKED : icons.LIKE }}"
+      [noBorder]="true"
+      (clickEvent)="musicService.changeLikeState(music)"
+      color="white"
+      tooltip="{{musicService.hasLike(music) ? 'Убрать из избранного' : 'Добавить в избранное'}}"
+      ></app-button>
+    </div>
+      <div class="play__info">
+        <span 
+          class="textBold play__title"
+          runLine
+          > {{music.title}}</span>
+        <span class="play__artist">{{music.artist}}</span>
+        <div class="play__bottomInfo">
+          <span class="play__album">{{music.album || 'Nee указан'}}</span>
+          <span>{{musicTimeLeft$ | async | date:'m:ss'}}</span>
+        </div>
+      </div>
+  </div>

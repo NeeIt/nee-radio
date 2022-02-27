@@ -1,0 +1,10 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+
+.easterImg {
+    @include Absolute(null, 50px, -2500px);
+    @include Size(null, null, 200px);
+
+    @include Media(smallTable) {
+      display: none;
+    }
+}

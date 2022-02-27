@@ -1,0 +1,44 @@
+<div class="homePage">
+
+  <!-- На мобилках нет боковой панели, так что инфа с неё отображается на главной -->
+  <div class="homePage__mobile" *appPermission="'home_mobile'">
+    <app-play-cover
+      *appPermission="'home_currentPlay'"
+      class="homePage__mobileCurrentPlay"
+      [music]="currentPlay$ | async"
+    ></app-play-cover>
+    <div
+      class="homePage__mobilefavArtists"
+      *appPermission="'home_favArtists'">
+      <h3>Любимые группы</h3>
+      <app-artist-list
+        [list]="favArtists$ | async"
+      ></app-artist-list>
+    </div>
+    <div class="home__mobileLogin login" *appPermission="'home_login'">
+      <app-login-block></app-login-block>
+    </div>
+  </div>
+
+
+  <div class="homePage__news" *appPermission="'home_news'">
+    <h2>Новости</h2>
+    <app-news-slider></app-news-slider>
+  </div>
+  <div class="livePlay__playlists">
+    <span
+      routerLink="/home"
+      class="livePlay__title"
+      routerLinkActive="livePlay__title_selected"
+      [routerLinkActiveOptions]="{exact: true}"
+      *appPermission="'home_livePlaylist'"
+      >В очереди</span>
+    <span
+      routerLink="/home/history"
+      class="livePlay__title"
+      routerLinkActive="livePlay__title_selected"
+      *appPermission="'home_history'"
+      >История</span>
+  </div>
+  <router-outlet></router-outlet>
+</div>

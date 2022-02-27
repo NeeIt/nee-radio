@@ -1,0 +1,11 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+.notFound {
+  @include Flex(center, center, column);
+  margin: 100px 0;
+  font-size: 3rem;
+  text-align: center;
+  &__img {
+    object-fit: contain;
+    height: 300px;
+  }
+}

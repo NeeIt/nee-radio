@@ -1,0 +1,142 @@
+@import './constructor-mixins.scss';
+
+:root {
+  --base_font: 'Rubik';
+
+  --background_color: #F4F5FE;
+  --block_color: #FFFFFF;
+  --border_color: #15111E;
+  --border_color_light: #EEEEEE;
+  --button_color_filled: #15111E;
+  --text_color_main: #333333;
+  --text_color_light: #9C9B9C;
+  --text_color_reversed: #FEFEFE;
+  --main_color: #9067C6;
+  --background_input_color: #FFFFFF;
+  --disable_gray: gray;
+  --main_border_radius: 15px;
+  --field_border_radius: 25px;
+}
+
+html {
+  font-size: 10px; /* 1rem; */
+}
+
+body {
+  background-color: var(--background_color);
+  font-size: 1.6rem;
+  color: var(--text_color_main);
+  font-family: var(--base_font);
+}
+
+a, a:visited, a:active {
+  color: var(--main_color);
+  text-decoration: none;
+}
+
+.textLight{
+  color: var(--text_color_light);
+}
+
+.textBold {
+  font-weight: bold;
+}
+
+.textBreakNone {
+  white-space: nowrap;
+}
+
+.textBreakDots {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.textBreakTwoLines {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+          line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Обычное сердечко */
+.fas.fa-heart {
+  color: rgb(255, 77, 77);
+}
+
+/* Хелоуинский */
+.fas.fa-ghost {
+  color:rgb(255, 120, 30);
+}
+/* Новогодний */
+.fas.fa-candy-cane {
+  color: rgb(255, 77, 77);
+}
+/* 9 Мая */
+.fas.fa-medal {
+  color:rgb(255, 120, 30);
+}
+
+/* Др Лупы */
+.fas.fa-beer {
+  color:rgb(235, 221, 36)
+}
+
+/* Др Радио или автора*/
+.fas.fa-birthday-cake {
+  color:rgb(253, 28, 159);
+}
+
+/* Тултипы */
+.ng-tooltip {
+  position: absolute;
+  max-width: 150px;
+  font-size: 14px;
+  text-align: center;
+  color: #f8f8f2;
+  padding: 3px 8px;
+  background: #282a36;
+  border-radius: 4px;
+  z-index: 1000;
+  opacity: 0;
+}
+.ng-tooltip:after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+}
+.ng-tooltip-top:after {
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-color: black transparent transparent transparent;
+}
+.ng-tooltip-bottom:after {
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-color: transparent transparent black transparent;
+}
+.ng-tooltip-left:after {
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-color: transparent transparent transparent black;
+}
+.ng-tooltip-right:after {
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-color: transparent black transparent transparent;
+}
+.ng-tooltip-show {
+  opacity: 1;
+}

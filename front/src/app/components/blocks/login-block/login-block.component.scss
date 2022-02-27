@@ -1,0 +1,17 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+@import '/src/assets/styles/mixins.scss';
+
+.loginBlock {
+  &__container {
+    @include MainBlock;
+    @include Flex(null, null, column);
+    @include Size(null, null, 260px);
+    row-gap: 20px;
+  }
+
+  &__controls {
+    @include Flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+}

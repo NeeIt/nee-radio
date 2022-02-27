@@ -1,0 +1,11 @@
+/*** Общие стили блоков ***/
+@mixin MainBlock {
+  border-radius: var(--main_border_radius);
+  background-color: var(--block_color);
+  padding: 20px;
+}
+
+@mixin MainBlockNoPadding {
+  border-radius: var(--main_border_radius);
+  background-color: var(--block_color);
+}

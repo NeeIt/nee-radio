@@ -1,0 +1,13 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+
+.leftMenu{
+  @include Media(mobile){
+    display: none;
+  }
+}
+.mobileMenu {
+  display: none;
+  @include Media(mobile){
+    display: block;
+  }
+}

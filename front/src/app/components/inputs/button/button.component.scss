@@ -1,0 +1,36 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+
+.button {
+  @include Flex;
+  position: relative;
+  padding: 10px 30px;
+  border-radius: var(--field_border_radius);
+  cursor: pointer;
+  border: 1px solid var(--border_color);
+  color: var(--text_color_main);
+  column-gap: 10px;
+
+  &_black {
+    background-color: var(--button_color_filled);
+    color: var(--text_color_reversed);
+  }
+
+  &_white {
+    background-color: var(--block_color);
+  }
+
+  &_noBorder {
+    padding: 10px;
+    border: 0px solid var(--border_color);
+  }
+
+  &_noPadding {
+    padding: 0px;
+  }
+  
+  &_disabled {
+    cursor: default;
+    background-color: var(--disable_gray);
+    border: 0px solid var(--disable_gray);
+  }
+}

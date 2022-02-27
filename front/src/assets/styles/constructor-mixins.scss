@@ -1,0 +1,82 @@
+/*** Media ***/
+$breakpoints: (
+    table:        1200px,
+    smallTable:   900px,
+    mobile:       767px,
+    smallMobile:  570px,
+);
+$vBreakpoints: (
+    table:        600px,
+);
+
+@mixin Media($point) {
+  @each $type, $value in $breakpoints {
+    @if $point == $type {
+      @media only screen and (max-width: $value) {
+        @content;
+      }
+   }
+  }
+}
+
+@mixin VerticalMedia($point) {
+  @each $type, $value in $vBreakpoints {
+    @if $point == $type {
+      @media only screen and (max-height: $value) {
+        @content;
+      }
+   }
+  }
+}
+/*** Флексы ***/
+@mixin Flex($justify: stretch, $align: stretch, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+/*** Позициорирование ***/
+@mixin Absolute ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+   position: absolute;
+   top: $top;
+   right: $right;
+   bottom: $bottom;
+   left: $left;
+}
+
+@mixin Fixed ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+   position: fixed;
+   top: $top;
+   right: $right;
+   bottom: $bottom;
+   left: $left;
+}
+
+/***  Обрезание строк ***/
+@mixin BreakNone {
+  white-space: nowrap;
+}
+
+@mixin BreakDots {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+@mixin BreakTwoLines {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+          line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+/*** Размеры ***/
+@mixin Size($width: auto, $height: auto, $max-width: none, $max-height: none) {
+  width: $width;
+  height: $height;
+  max-width: $max-width;
+  max-height: $max-height;
+}

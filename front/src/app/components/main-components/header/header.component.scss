@@ -1,0 +1,40 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+
+.header {
+  @include Flex(null, center);
+  column-gap: 60px;
+  @include Media(mobile){
+    display: none;
+  }
+
+  &__historyControls {
+    @include Flex(null, center);
+    column-gap: 30px;
+    font-size: 1.6rem;
+  }
+}
+
+.searchField {
+   @include Flex(null, center);
+   @include Size(null, null, 575px);
+   flex-grow: 1;
+   column-gap: 20px;
+   background-color: var(--background_input_color);
+   border-radius: var(--field_border_radius);
+   overflow: hidden;
+   padding: 0 25px;
+
+   &__icon {
+     cursor: pointer;
+   }
+
+   &__input {
+     @include Size(0, 50px);
+     border-width: 0px;
+     flex-grow: 1;
+
+     &:focus {
+       outline: none;
+     }
+   }
+}

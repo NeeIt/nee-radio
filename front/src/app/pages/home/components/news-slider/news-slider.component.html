@@ -1,0 +1,29 @@
+<div class="newsSlider">
+  <!-- TODO Добавить стрелки слайдеру по бокам-->
+  <!-- TODO добавить возможность менять текст кнопки-->
+  <div class="newsSlider__container" #slider>
+    <div class="newsSlider__slide"
+    *ngFor="let news of (newsList$ | async)"
+    [style.backgroundImage] = "'url(\'' + (news.cover || defaultNewsCover) + '\')'">
+      <div class="newsSlider__data">
+        <span class="newsSlider__title">{{news.title}}</span>
+        <div class="newsSlider__controls" *ngIf="news.path">
+          <app-button
+            [icon]="icons.NEXT_ANGLE"
+            color="black"
+            [routerLink]="news.path"
+          >Перейти</app-button>
+      </div>
+      </div>
+    </div>
+  </div>
+    <div class="newsSlider__bullets">
+      <div class="newsSlider__bullet"
+      *ngFor="let news of (newsList$ | async);let index = index"
+      [class.newsSlider__bullet_current]="index === this.currentSlide"
+      (click) = "setSlide(index)">
+        <i class="fas fa-circle"
+        aria-hidden="true" ></i>
+     </div>
+    </div>
+</div>

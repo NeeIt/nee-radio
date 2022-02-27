@@ -1,0 +1,55 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+@import '/src/assets/styles/mixins.scss';
+
+.play {
+  @include MainBlock;
+  @include Size(260px);
+
+  &__cover {
+    @include Flex(flex-end, flex-end);
+    @include Size(100%, 210px);
+    border-radius: var(--main_border_radius);
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+
+  &__info {
+    @include Flex(null, null, column);
+    flex-grow: 1;
+    row-gap: 10px;
+    @include Size(100%);
+    overflow: hidden;
+  }
+
+  &__bottomInfo {
+    @include Flex;
+    column-gap: 10px;
+  }
+
+  @keyframes scroll {
+    0%    {transform: translate(0, 0);}
+    40%   {transform: translate(0, 0);}
+    100%  {transform: translate(-100%, 0);}
+  }
+
+  &__artist, &__album, &__title {
+    cursor: pointer;
+  }
+
+  &__title {
+    @include BreakNone;
+  }
+
+  &__album {
+    @include BreakDots;
+    flex-grow: 1;
+  }
+
+  &__artist {
+    @include BreakDots;
+    font-size: 1.4rem;
+    color: var(--text_color_light);
+  }
+}

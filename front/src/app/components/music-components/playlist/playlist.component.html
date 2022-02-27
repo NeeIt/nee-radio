@@ -1,0 +1,41 @@
+<div class="playlist" *ngIf="playlist.length; else empty">
+  <div class="playlist__element music"
+    *ngFor="let music of playlist; let index = index">
+    <div class="music__index">
+      <div>{{(index + 1) | number : '2.0-2'}}</div>
+    </div>
+    <div class="music__data">
+      <div class="music__dataGroup">
+        <div class="music__title playlist__td">
+          <div class="playlist__th">НАЗВАНИЕ</div>
+          <div class="textBreakTwoLines">{{music.title}}</div>
+        </div>
+        <div class="music__artist playlist__td">
+          <div class="playlist__th">АВТОР</div>
+          <div class="textBreakTwoLines">{{music.artist}}</div>
+        </div>
+      </div>
+      <div class="music__dataGroup">
+        <div class="music__album playlist__td">
+          <div class="playlist__th">АЛЬБОМ</div>
+          <div class="textBreakTwoLines">{{music.album || 'Nee указан'}}</div>
+        </div>
+        <div class="music__time playlist__td">
+          <div class="playlist__th">ДЛИТ.</div>
+          <div class="textBreakTwoLines">{{music.time | date:'m:ss'}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="music__actions">
+      <app-button
+        icon="{{musicService.hasLike(music) ? icons.LIKED : icons.LIKE }}"
+        [noBorder]="true"
+        (clickEvent)="musicService.changeLikeState(music)"
+        tooltip="{{musicService.hasLike(music) ? 'Убрать из избранного' : 'Добавить в избранное'}}"
+      ></app-button>
+    </div>
+  </div>
+</div>
+<ng-template #empty>
+  {{emptyText}}
+</ng-template>

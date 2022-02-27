@@ -1,0 +1,19 @@
+<aside class="rightPanel" #aside>
+  <div class="rightPanel__login login" *appPermission="'rightPanel_login'">
+    <app-login-block></app-login-block>
+  </div>
+  <div class="rightPanel__currentPlay" #currentPlay>
+    <h3>Сейчас играет</h3>
+    <app-play-cover
+      [music] = "currentPlay$ | async"
+    ></app-play-cover>
+  </div>
+  <div class="rightPanel__favArtista favArtists"
+      *appPermission="'rightPanel_favArtists'">
+    <h3>Любимые группы</h3>
+    <app-artist-list
+      [list] = "favArtists$ | async"
+      moreLink="TODO"
+    ></app-artist-list>
+  </div>
+</aside>

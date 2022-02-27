@@ -1,0 +1,20 @@
+<div class="artistList">
+  <div class="artistList__element artist" *ngFor="let artist of list">
+    <div class="artist__img"
+    [style.backgroundImage]="'url(\'' + (artist.avatar || defaultArtistAvatar) + '\')'"
+    ></div>
+    <div class="artist__info">
+      <span class="textBold textBreakTwoLines">{{artist.name}}</span>
+      <span class="artist__description">{{artist.songCount}} песни в библиотеке {{artist.songCount === 69? ';)': ''}}</span>
+      <!-- TODO песни песен песня -->
+    </div>
+  </div>
+  <app-button
+  *ngIf="moreLink"
+  [icon]="icons.NEXT_ANGLE"
+  [route]="moreLink"
+  [noBorder]="true"
+  [noPadding]="true">
+    Посмотреть больше
+  </app-button>
+</div>

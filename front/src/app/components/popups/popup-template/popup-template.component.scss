@@ -1,0 +1,39 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+@import '/src/assets/styles/mixins.scss';
+
+.popupTemplate{
+    @include Fixed(0, 0);
+    @include Size(100%, 100%);
+    @include Flex(center, center);
+    background-color: rgba(0,0,0, .35); 
+    z-index: 100;
+    
+    &__popup {
+        @include Size(100%, null, 570px);
+    }    
+}
+
+.popup{
+    @include MainBlock;
+
+    &__title{
+        font-size: 2.2rem;
+        margin: 0;
+    }
+
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+
+    &__footer{
+        margin-top: 20px;
+    }
+
+    &__closeIco{
+        padding: 10px;
+        cursor: pointer;
+    }
+}

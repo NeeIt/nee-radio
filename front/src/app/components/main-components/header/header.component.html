@@ -1,0 +1,22 @@
+<div class="header">
+  <div class="header__historyControls"
+    *appPermission="'header_actions'">
+    <app-button
+      [icon]="icons.BACK_ARROW"
+      [noBorder]="true"
+    ></app-button>
+    <app-button
+      [icon]="icons.NEXT_ARROW"
+      [noBorder]="true"
+    ></app-button>
+  </div>
+  <div class="header__search searchField"
+    *appPermission="'header_search'">
+      <i
+        class="{{icons.SEARCH}} searchField__icon"
+        aria-hidden="true"
+        role="button"
+      ></i>
+      <input class="searchField__input"/>
+  </div>
+</div>

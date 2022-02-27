@@ -1,0 +1,14 @@
+<form [formGroup]="group">
+    <label class="input">
+        <i class="{{leftIcon}} input__icon input__icon--left" *ngIf="leftIcon" (click)="leftIconClick.emit()"></i>
+        <input 
+            [name]="name? controlName : name" 
+            [type]="type"
+            [placeholder]="placeholder"
+            [formControlName]="controlName"
+            [ngModel]="value" 
+            (ngModelChange)="changeEvent.emit($event)"
+        />
+        <i class="{{rightIcon}} input__icon input__icon--right" *ngIf="rightIcon" (click)="rightIconClick.emit()"></i>
+    </label>
+</form>

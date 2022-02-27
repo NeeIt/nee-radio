@@ -1,0 +1,11 @@
+<div class="mobileMenu">
+  <nav class="mobileMenu__navigation navigation">
+    <i *ngFor="let element of menu"
+    class="{{element.iconClass}} navigation__element"
+    [routerLink]="element.path"
+    routerLinkActive="navigation__element_selected"
+    aria-hidden="true"
+    ></i>
+    <i class="{{icons.SEARCH}} navigation__element" aria-hidden="true"></i>
+  </nav>
+</div>

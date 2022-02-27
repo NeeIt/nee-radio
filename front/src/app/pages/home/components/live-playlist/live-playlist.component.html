@@ -1,0 +1,14 @@
+<app-live-playlist *appPermission="'home_livePlaylist'"
+  [playlist] = "livePlaylist$ | async"
+  [currentElement] = "liveCurrentPlay$ | async"
+></app-live-playlist>
+<ng-container *appPermission="'livePlaylist_easter'">
+  <img
+    src="assets/img/rightPanel__easterImg.png"
+    alt="Заказано более 50 песен"
+    *ngIf="(livePlaylist$ | async).length > 50"
+    class="easterImg"
+    />
+</ng-container>
+
+

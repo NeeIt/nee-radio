@@ -1,0 +1,73 @@
+<div class="playlist" *ngIf="playlist.length; else empty">
+    <div class="playlist__element music"
+      *ngFor="let music of playlist; let index = index"
+      [class.music__currentPlay]="music.id === currentElement?.id">
+      <div class="music__index">
+        <div *ngIf="index; else liveIco">{{index | number : '2.0-2'}}</div>
+        <ng-template #liveIco>
+          <i class="{{icons.LIVE}} music__index_live" aria-hidden="true"></i>
+        </ng-template>
+      </div>
+      <div class="music__data">
+        <div class="music__dataGroup">
+          <div class="music__title playlist__td">
+            <div class="playlist__th">НАЗВАНИЕ</div>
+            <div class="textBreakTwoLines">{{music.title}}</div>
+          </div>
+          <div class="music__artist playlist__td">
+            <div class="playlist__th">АВТОР</div>
+            <div class="textBreakTwoLines">{{music.artist}}</div>
+          </div>
+        </div>
+        <div class="music__dataGroup">
+          <div class="music__album playlist__td">
+            <div class="playlist__th">АЛЬБОМ</div>
+            <div class="textBreakTwoLines">{{music.album || 'Nee указан'}}</div>
+          </div>
+          <div class="music__userName playlist__td" *appPermission="'livePlaylist_orderUserName'">
+            <div class="playlist__th">ЗАКАЗАЛ</div>
+            <div class="textBreakDots">{{music.orderUserName}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="music__actions" *appPermission="'livePlaylist_actions'">
+        <ng-container *appPermission="'livePlaylist_vote'">
+          <ng-container *ngIf="index">
+            <ng-container
+            *ngIf="vote$ | async; let vote; else votable">
+              <app-button
+                [icon]="icons.VOTED"
+                [noBorder]="true"
+                *ngIf="music.id === vote.id"
+                (clickEvent)="musicService.resetVote()"
+                tooltip="Забрать голос"
+              ></app-button>
+            </ng-container>
+            <ng-template #votable>
+              <app-button
+                [icon]="icons.VOTE"
+                [noBorder]="true"
+                tooltip="Отдать голос"
+                (clickEvent)="musicService.setVote(music)"
+              ></app-button>
+            </ng-template>
+            <div class="music__votes">
+              {{music.votes}}
+            </div>
+          </ng-container>
+        </ng-container>
+        <app-button
+          *appPermission="'livePlaylist_like'"
+          icon="{{musicService.hasLike(music) ? icons.LIKED : icons.LIKE }}"
+          [noBorder]="true"
+          (clickEvent)="musicService.changeLikeState(music)"
+          tooltip="{{musicService.hasLike(music) ? 'Убрать из избранного' : 'Добавить в избранное'}}"
+        ></app-button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #empty>
+      Похоже, что сейчас ничего не играет. Закажите песню пока очереди нет ;)
+  </ng-template>
+

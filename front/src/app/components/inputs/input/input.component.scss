@@ -1,0 +1,24 @@
+@import '/src/assets/styles/constructor-mixins.scss';
+
+.input{
+    border: 1px solid var(--border_color);
+    border-radius: var(--main_border_radius);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__control{
+        border-width: 0px;
+        padding: 10px;
+        flex-grow: 1;
+
+        &:focus{
+            outline: none;
+        }
+    }
+
+    &__icon{
+        padding: 10px;
+    }
+}
