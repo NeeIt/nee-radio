@@ -52,6 +52,8 @@ module.exports = {
         'no-empty-character-class': 'warn',
         'no-empty-pattern': 'error',
         'no-ex-assign': 'error',
+        '@typescript-eslint/no-empty-function': 'off',
+        'no-prototype-builtins': 'off',
         'no-fallthrough': 'warn',
         'no-func-assign': 'error',
         'no-import-assign': 'error',
@@ -71,7 +73,12 @@ module.exports = {
         'no-unreachable': 'warn',
         'no-unreachable-loop': 'warn',
         'no-unsafe-finally': 'error',
-        'no-unused-vars': 'warn',
+        'no-unused-vars': ["warn", {
+          "vars": "all",
+          "args": "none",
+          "ignoreRestSiblings": false
+          }
+        ],
         'no-use-before-define': 'error',
         'use-isnan': 'warn',
         'valid-typeof': 'error',
@@ -88,6 +95,59 @@ module.exports = {
         'computed-property-spacing': ['error', 'never'],
         'dot-location': ['error', 'property'],
         'func-call-spacing': ['error', 'never'],
+        'key-spacing': ['error', {
+          afterColon: true
+          }],
+        'keyword-spacing': ['error', {
+          before: true,
+          after: true,
+        }],
+        'max-len': ['warn', {
+          code: 120,
+          tabWidth: 2,
+          ignoreUrls: true,
+          ignoreTrailingComments: true,
+          ignoreStrings: true,
+          ignoreTemplateLiterals: true,
+        }],
+        'multiline-ternary': ['error', 'always'],
+        'new-parens': ['error', 'always'],
+        'newline-per-chained-call': ['error', {
+          ignoreChainWithDepth: 3
+        }],
+        'no-multi-spaces': 'error',
+        'no-multiple-empty-lines': ['error', {
+          max: 2,
+          maxEOF: 0,
+          maxBOF: 1
+        }],
+        'no-tabs': ['warn', {
+          allowIndentationTabs: true,
+        }],
+        'no-trailing-spaces': 'error',
+        'object-curly-newline': ['error', {
+          multiline: true
+        }],
+        'object-curly-spacing': ['error', 'never'],
+        'operator-linebreak': ['error', 'before'],
+        'padded-blocks': ['error', 'never'],
+        'padding-line-between-statements': [
+          'error',
+          { blankLine: "always", prev: ["case", "default"], next: "*" },
+          { blankLine: "any", prev: ["const", "let", "var"], next: ["const", "let", "var"] },
+          { blankLine: "always", prev: "*", next: "return" }
+          ],
+        'rest-spread-spacing': ['error', 'never'],
+        'semi': ['error', 'always'],
+        'semi-spacing': 'error',
+        'semi-style': ['error', 'last'],
+        'space-before-blocks': ['error', 'never'],
+        'space-before-function-paren': ['error', 'never'],
+        'space-in-parens': ['error', 'never'],
+        'space-infix-ops': 'error',
+        'space-unary-ops': 'error',
+        'switch-colon-spacing': 'error',
+        '@angular-eslint/directive-selector': 'warn'
       }
     },
     {

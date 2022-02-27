@@ -1,17 +1,28 @@
 {
   "name": "nee-radio",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "startNee": "ng serve --configuration=nee",
+    "update-locale": "ngx-translate-extract -i ./src -o src/assets/locale/*.json --sort --format namespaced-json"
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g './commitlint.js'",
       "pre-commit": "lint-staged --relative"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "front/node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./commitizen.js"
     }
   },
   "lint-staged": {
@@ -29,7 +40,15 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
-    "rxjs": "~6.6.0",
+    "@biesbjerg/ngx-translate-extract": "^7.0.4",
+    "@ngrx/effects": "^12.5.1",
+    "@ngrx/store": "^12.5.1",
+    "@ngrx/store-devtools": "^12.5.1",
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
+    "@types/luxon": "^2.0.7",
+    "luxon": "^2.1.1",
+    "rxjs": "^6.6.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
@@ -42,11 +61,14 @@
     "@angular-eslint/template-parser": "12.6.0",
     "@angular/cli": "~12.2.11",
     "@angular/compiler-cli": "~12.2.0",
-    "@types/jasmine": "~3.8.0",
-    "@types/node": "^12.11.1",
+    "@commitlint/cli": "^13.2.1",
     "@types/eslint": "^7.28.2",
+    "@types/events": "^3.0.0",
+    "@types/jasmine": "~3.8.0",
+    "@types/node": "^13.5.2",
     "@typescript-eslint/eslint-plugin": "4.28.2",
     "@typescript-eslint/parser": "4.28.2",
+    "cz-customizable": "^6.3.0",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jasmine": "^4.1.2",
@@ -60,6 +82,7 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "lint-staged": "^11.2.4",
     "prettier": "^2.4.1",
-    "typescript": "~4.3.5"
+    "typescript": "~4.3.5",
+    "vents": "^0.1.1"
   }
 }
