@@ -31,6 +31,5 @@ export class AppComponent{
     public permissionService: PermissionService
     ){
       this.popupService.setViewContainerRef(viewContainerRef);
-      this.popupService.open('login');
   }
 }
